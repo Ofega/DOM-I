@@ -54,7 +54,16 @@ middleImage.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
 
 
 // Task 2
-// === Header Selector ===
+
+// === Navigation Content ===
+let navLinks = document.querySelectorAll('nav a')
+
+navLinks.forEach((link, index) => {
+  link.textContent = siteContent['nav'][`nav-item-${index}`];
+})
+
+
+// === Header Content ===
 let ctaContentHeader = document.querySelector(".cta-text h1");
 let ctaContentButton = document.querySelector(".cta-text button");
 
@@ -80,6 +89,7 @@ contactHeading.textContent = siteContent['contact']['contact-h4'];
 contactTexts[0].textContent = siteContent['contact']['address'];
 contactTexts[1].textContent = siteContent['contact']['phone'];
 contactTexts[2].textContent = siteContent['contact']['email'];
+
 
 // === Footer Content ===
 let footerText = document.querySelector('footer p');
