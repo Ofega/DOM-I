@@ -41,74 +41,104 @@ const siteContent = {
   },
 };
 
-// Example: Update the img src for the logo
-let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
 
-// Task 1:
-let ctaImage = document.getElementById("cta-img");
-ctaImage.setAttribute('src', siteContent["cta"]["img-src"]);
+// Images Selector
+const logo = document.getElementById("logo-img");
+const ctaImage = document.getElementById("cta-img");
+const middleImage = document.getElementById("middle-img");
 
-let middleImage = document.getElementById("middle-img");
-middleImage.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
+// Navigation Selector
+const navLinks = document.querySelectorAll('nav a');
+const nav = document.querySelector('nav');
 
+// CTA Selector
+const ctaContentHeader = document.querySelector(".cta-text h1");
+const ctaContentButton = document.querySelector(".cta-text button"); 
 
-// Task 2
-// Change the color of the navigation text to be green.
-// === Navigation Content ===
-let navLinks = document.querySelectorAll('nav a');
+// Main Content Selector
+const mainContentArray = document.querySelectorAll(".text-content");
 
-navLinks.forEach((link, index) => {
-  link.textContent = siteContent['nav'][`nav-item-${index}`];
-  link.classList.add('green');
-})
+// Contact Selector
+const contactHeading = document.querySelector('.contact h4');
+const contactTexts = document.querySelectorAll('.contact p');
 
-// Append New Navigation Link
-let nav = document.querySelector('nav');
-let newLink = document.createElement('a');
+// Footer Selector
+const footerText = document.querySelector('footer p');
 
+// Create new a tag to append to nav
+const newLink = document.createElement('a');
 newLink.textContent = 'Contact';
 newLink.setAttribute('href', '#');
-newLink.classList.add('green');
-nav.appendChild(newLink);
+newLink.style.color = 'green';
+
+// Array for the navigation text
+const idArray = ["features", "about", "services", "product", "vision"];
+
+// Is page updated?
+let isUpdated = false;
+
+// Update Content on page load
+// dynamicContentUpdate();
 
 
-// === Header Content ===
-let ctaContentHeader = document.querySelector(".cta-text h1");
-let ctaContentButton = document.querySelector(".cta-text button"); 
+// Dynamically update if isToggle is true
+function dynamicContentUpdate() {
+  // Set images src
+  logo.setAttribute('src', siteContent["nav"]["img-src"])
+  ctaImage.setAttribute('src', siteContent["cta"]["img-src"]);
+  middleImage.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
 
-ctaContentHeader.innerHTML = `DOM<br> Is<br> Awesome`;
-ctaContentButton.textContent = siteContent['cta']['button'];
+  // Show each nav link and give green color
+  navLinks.forEach((link, index) => {
+    link.textContent = siteContent['nav'][`nav-item-${index}`];
+    link.style.color = 'green';
+  })
 
+  // Add newly created nav link to navigation
+  nav.appendChild(newLink);
 
-// === Text Content === 
-let mainContentArray = document.querySelectorAll(".text-content");
-let idArray = ["features", "about", "services", "product", "vision"];
+  // Update cta content
+  ctaContentHeader.innerHTML = `DOM<br> Is<br> Awesome`;
+  ctaContentButton.textContent = siteContent['cta']['button'];
 
-mainContentArray.forEach((item, index) => {
-  item.children[0].textContent = siteContent['main-content'][`${idArray[index]}-h4`];
-  item.children[1].textContent = siteContent['main-content'][`${idArray[index]}-content`];
-})
+  // Update content for the children of text content
+  mainContentArray.forEach((item, index) => {
+    item.children[0].textContent = siteContent['main-content'][`${idArray[index]}-h4`];
+    item.children[1].textContent = siteContent['main-content'][`${idArray[index]}-content`];
+  })
 
+  // Update content for contact
+  contactHeading.textContent = siteContent['contact']['contact-h4'];
+  contactTexts[0].innerHTML = `123 Way 456 Street<br> Somewhere, USA`;
+  contactTexts[1].textContent = siteContent['contact']['phone'];
+  contactTexts[2].textContent = siteContent['contact']['email'];
 
-// === Contact Content ===
-let contactHeading = document.querySelector('.contact h4');
-let contactTexts = document.querySelectorAll('.contact p');
-
-contactHeading.textContent = siteContent['contact']['contact-h4'];
-contactTexts[0].innerHTML = `123 Way 456 Street<br> Somewhere, USA`;
-contactTexts[1].textContent = siteContent['contact']['phone'];
-contactTexts[2].textContent = siteContent['contact']['email'];
-
-
-// === Footer Content ===
-let footerText = document.querySelector('footer p');
-let footerParagraph = siteContent['footer']['copyright'];
-
-footerText.textContent = siteContent['footer']['copyright'];
+  // Update footer content
+  footerText.textContent = siteContent['footer']['copyright'];
+}
 
 
 // === Stretch Goal ===
+const btnContainer = document.createElement('div');
+const toggleBtn = document.createElement('button');
+const clearBtn = document.createElement('button');
+
+
+toggleBtn.style = 'position:fixed;top:0;left:0';
+toggleBtn.textContent = 'Update Content';
+
+toggleBtn.addEventListener('click', function() {
+  if(isUpdated) {
+    alert('Page is already updated')
+  } else {
+    dynamicContentUpdate();
+    isUpdated = true;
+  }
+})
+
+document.body.prepend(toggleBtn);
+  
+
 
 
 
