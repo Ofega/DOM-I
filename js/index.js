@@ -67,16 +67,17 @@ navLinks.forEach((link, index) => {
 let nav = document.querySelector('nav');
 let newLink = document.createElement('a');
 
-newLink.textContent = 'Test Link';
+newLink.textContent = 'Contact';
+newLink.setAttribute('href', '#');
 newLink.classList.add('green');
 nav.appendChild(newLink);
 
 
 // === Header Content ===
 let ctaContentHeader = document.querySelector(".cta-text h1");
-let ctaContentButton = document.querySelector(".cta-text button");
+let ctaContentButton = document.querySelector(".cta-text button"); 
 
-ctaContentHeader.textContent = siteContent['cta']['h1'];
+ctaContentHeader.innerHTML = `DOM<br> Is<br> Awesome`;
 ctaContentButton.textContent = siteContent['cta']['button'];
 
 
@@ -95,13 +96,15 @@ let contactHeading = document.querySelector('.contact h4');
 let contactTexts = document.querySelectorAll('.contact p');
 
 contactHeading.textContent = siteContent['contact']['contact-h4'];
-contactTexts[0].textContent = siteContent['contact']['address'];
+contactTexts[0].innerHTML = `123 Way 456 Street<br> Somewhere, USA`;
 contactTexts[1].textContent = siteContent['contact']['phone'];
 contactTexts[2].textContent = siteContent['contact']['email'];
 
 
 // === Footer Content ===
 let footerText = document.querySelector('footer p');
+let footerParagraph = siteContent['footer']['copyright'];
+
 footerText.textContent = siteContent['footer']['copyright'];
 
 
