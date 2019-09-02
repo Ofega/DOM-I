@@ -57,6 +57,7 @@ middleImage.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
 // === Header Selector ===
 let ctaContentHeader = document.querySelector(".cta-text h1");
 let ctaContentButton = document.querySelector(".cta-text button");
+
 ctaContentHeader.textContent = siteContent['cta']['h1'];
 ctaContentButton.textContent = siteContent['cta']['button'];
 
@@ -67,10 +68,18 @@ let idArray = ["features", "about", "services", "product", "vision"];
 
 mainContentArray.forEach((item, index) => {
   item.children[0].textContent = siteContent['main-content'][`${idArray[index]}-h4`];
-  item.children[1].textContent = siteContent['main-content'][`${idArray[index]}-content`]
+  item.children[1].textContent = siteContent['main-content'][`${idArray[index]}-content`];
 })
 
-console.log(mainContentArray[0].children);
+
+// === Contact Content ===
+let contactHeading = document.querySelector('.contact h4');
+let contactTexts = document.querySelectorAll('.contact p');
+
+contactHeading.textContent = siteContent['contact']['contact-h4'];
+contactTexts[0].textContent = siteContent['contact']['address'];
+contactTexts[1].textContent = siteContent['contact']['phone'];
+contactTexts[2].textContent = siteContent['contact']['email'];
 
 
 
