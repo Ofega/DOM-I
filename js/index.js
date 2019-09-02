@@ -54,13 +54,22 @@ middleImage.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
 
 
 // Task 2
-
+// Change the color of the navigation text to be green.
 // === Navigation Content ===
-let navLinks = document.querySelectorAll('nav a')
+let navLinks = document.querySelectorAll('nav a');
 
 navLinks.forEach((link, index) => {
   link.textContent = siteContent['nav'][`nav-item-${index}`];
+  link.classList.add('green');
 })
+
+// Append New Navigation Link
+let nav = document.querySelector('nav');
+let newLink = document.createElement('a');
+
+newLink.textContent = 'Test Link';
+newLink.classList.add('green');
+nav.appendChild(newLink);
 
 
 // === Header Content ===
@@ -94,6 +103,9 @@ contactTexts[2].textContent = siteContent['contact']['email'];
 // === Footer Content ===
 let footerText = document.querySelector('footer p');
 footerText.textContent = siteContent['footer']['copyright'];
+
+
+// === Stretch Goal ===
 
 
 
