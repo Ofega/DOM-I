@@ -8,11 +8,13 @@ const siteContent = {
     "nav-item-6": "Contact",
     "img-src": "img/logo.png"
   },
+
   "cta": {
     "h1": "DOM Is Awesome",
     "button": "Get Started",
     "img-src": "img/header-img.png"
   },
+
   "main-content": {
     "features-h4":"Features",
     "features-content": "Features content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
@@ -26,12 +28,14 @@ const siteContent = {
     "vision-h4":"Vision",
     "vision-content": "Vision content elementum magna eros, ac posuere elvit tempus et. Suspendisse vel tempus odio, in interdutm nisi. Suspendisse eu ornare nisl. Nullam convallis augue justo, at imperdiet metus scelerisque quis.",
   },
+
   "contact": {
     "contact-h4" : "Contact",
     "address" : "123 Way 456 Street Somewhere, USA",
     "phone" : "1 (888) 888-8888",
     "email" : "sales@greatidea.io",
   },
+
   "footer": {
     "copyright" : "Copyright Great Idea! 2018"
   },
@@ -43,7 +47,30 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 
 // Task 1:
 let ctaImage = document.getElementById("cta-img");
-ctaImage.setAttribute('src', siteContent["cta"]["img-src"])
+ctaImage.setAttribute('src', siteContent["cta"]["img-src"]);
 
 let middleImage = document.getElementById("middle-img");
-middleImage.setAttribute('src', siteContent["main-content"]["middle-img-src"])
+middleImage.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
+
+
+// Task 2
+// === Header Selector ===
+let ctaContentHeader = document.querySelector(".cta-text h1");
+let ctaContentButton = document.querySelector(".cta-text button");
+ctaContentHeader.textContent = siteContent['cta']['h1'];
+ctaContentButton.textContent = siteContent['cta']['button'];
+
+
+// === Text Content === 
+let mainContentArray = document.querySelectorAll(".text-content");
+let idArray = ["features", "about", "services", "product", "vision"];
+
+mainContentArray.forEach((item, index) => {
+  item.children[0].textContent = siteContent['main-content'][`${idArray[index]}-h4`];
+  item.children[1].textContent = siteContent['main-content'][`${idArray[index]}-content`]
+})
+
+console.log(mainContentArray[0].children);
+
+
+
